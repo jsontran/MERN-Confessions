@@ -12,7 +12,7 @@ const ThoughtsSchema = new Schema({
     },
     timestamp: {
         type: String,
-        default: Date.now()
+        required: true
     }
 })
 
