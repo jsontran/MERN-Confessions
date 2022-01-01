@@ -13,7 +13,8 @@ html {
   position: absolute;
   width: 100%;
   height: 80px;
-  background-color: rgb(40, 40, 40);
+  background-color: #634d42;
+  color: #e0be90;
   top: 0;
   z-index: 101;
 
@@ -21,7 +22,8 @@ html {
   justify-content: center;
   align-items: center;
 
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+  color: white;
 
   font-size: 50px;
   font-family: Arial, sans-serif;
@@ -41,9 +43,9 @@ html {
   display: flex;
   justify-content: center;
   padding: 40px 40px 40px 40px;
-  background-color: rgb(24, 24, 24);
+  background-color: #3f2e24;
 
-  overflow: auto;
+  overflow-y: scroll;
 
   .thoughtsDisplay {
     position: absolute;
@@ -54,10 +56,12 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 1;
 
+    &.active {
+      display: none;
     }
   }
+
   .createPrompt {
     position: absolute;
     width: 100%;
@@ -69,21 +73,23 @@ html {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    background-color: rgb(24, 24, 24);
+    background-color: #3f2e24;
     z-index: 2;
 
-    input[name="title"] {
+    input {
+      background-color: rgb(49, 37, 26);
+      color: #e0be90;
       width: 60%;
       height: 7vh;
       padding: 0 15px 0 15px;
       margin-bottom: 20px;
 
       font-size: 25px;
-      outline: none;
       border-radius: 15px;
+      outline: solid 3px #e0be90;
     }
 
-    textarea[name="body"] {
+    textarea {
       width: 60%;
       height: 50vh;
       padding: 15px 15px 15px 15px;
@@ -94,6 +100,10 @@ html {
       font-size: 20px;
       outline: none;
       border-radius: 15px;
+      outline: solid 3px #e0be90;
+
+      background-color: rgb(49, 37, 26);
+      color: #e0be90;
     }
 
     button {
@@ -102,10 +112,12 @@ html {
       padding: 15px;
       font-size: 15px;
       border-radius: 25px;
-      background-color: rgb(64, 64, 64);
+      background-color: rgb(49, 37, 26);
+      color: #e0be90;
+      outline: none;
     }
 
-    transition: all 1s ease;
+    transition: all 0.5s ease;
     &.active {
       opacity: 1;
       overflow: hidden;
@@ -137,7 +149,8 @@ html {
     font-family: Arial, sans-serif;
 
     transition: all 1s ease;
-    background-color: rgb(64, 64, 64);
+    background-color: rgb(49, 37, 26);
+    outline: solid 3px #e0be90;
   }
 
   &.active {
