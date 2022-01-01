@@ -1,3 +1,111 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  background-color: rgb(24, 24, 24);
+}
+
+.content {
+  width: 100vw;
+  height: auto;
+  top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 40px 40px 40px;
+}
+
+.header {
+  width: 100vw;
+  height: 80px;
+  background-color: rgb(40, 40, 40);
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+
+  font-size: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.createPrompt {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+
+  input[name="title"] {
+    width: 60%;
+    height: 7vh;
+    padding: 0 15px 0 15px;
+    margin-bottom: 20px;
+
+    font-size: 25px;
+    outline: none;
+    border-radius: 15px;
+  }
+
+  textarea[name="body"] {
+    width: 60%;
+    height: 50vh;
+    padding: 15px 15px 15px 15px;
+    margin-bottom: 20px;
+
+    resize: none;
+
+    font-size: 20px;
+    outline: none;
+    border-radius: 15px;
+  }
+
+  transition: all 1s ease;
+  &.active {
+    opacity: 0.9;
+  }
+}
+
+.createButton {
+  position: absolute;
+  right: 3vw;
+  bottom: 4vh;
+
+  .button {
+    z-index: 101;
+    width: 75px;
+    height: 75px;
+    font-size: 75px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    color: white;
+
+    font-weight: 300;
+    font-family: Arial, sans-serif;
+
+    transition: all 1s ease;
+    background-color: rgb(64, 64, 64);
+  }
+
+  &.active {
+    .button {
+      transform-origin: center;
+      transform: rotate(45deg);
+    }
+  }
 }
