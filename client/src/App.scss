@@ -5,26 +5,17 @@ html {
 
 .App {
   height: 100vh;
-  overflow: hidden;
   padding: 0;
-  background-color: rgb(24, 24, 24);
-}
-
-.content {
-  width: 100vw;
-  height: auto;
-  top: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 40px 40px 40px;
+  overflow: hidden;
 }
 
 .header {
-  width: 100vw;
+  position: absolute;
+  width: 100%;
   height: 80px;
   background-color: rgb(40, 40, 40);
   top: 0;
+  z-index: 101;
 
   display: flex;
   justify-content: center;
@@ -36,42 +27,89 @@ html {
   font-family: Arial, sans-serif;
 }
 
-.createPrompt {
+.content {
+  position: relative;
   width: 100%;
+  height: calc(100vh - 80px);
+  top: 80px;
+}
 
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  opacity: 0;
+  padding: 40px 40px 40px 40px;
+  background-color: rgb(24, 24, 24);
 
-  input[name="title"] {
-    width: 60%;
-    height: 7vh;
-    padding: 0 15px 0 15px;
-    margin-bottom: 20px;
+  overflow: auto;
 
-    font-size: 25px;
-    outline: none;
-    border-radius: 15px;
+  .thoughtsDisplay {
+    position: absolute;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+
+    }
   }
+  .createPrompt {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 80px);
+    top: 0;
 
-  textarea[name="body"] {
-    width: 60%;
-    height: 50vh;
-    padding: 15px 15px 15px 15px;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    background-color: rgb(24, 24, 24);
+    z-index: 2;
 
-    resize: none;
+    input[name="title"] {
+      width: 60%;
+      height: 7vh;
+      padding: 0 15px 0 15px;
+      margin-bottom: 20px;
 
-    font-size: 20px;
-    outline: none;
-    border-radius: 15px;
-  }
+      font-size: 25px;
+      outline: none;
+      border-radius: 15px;
+    }
 
-  transition: all 1s ease;
-  &.active {
-    opacity: 0.9;
+    textarea[name="body"] {
+      width: 60%;
+      height: 50vh;
+      padding: 15px 15px 15px 15px;
+      margin-bottom: 20px;
+
+      resize: none;
+
+      font-size: 20px;
+      outline: none;
+      border-radius: 15px;
+    }
+
+    button {
+      width: auto;
+      height: auto;
+      padding: 15px;
+      font-size: 15px;
+      border-radius: 25px;
+      background-color: rgb(64, 64, 64);
+    }
+
+    transition: all 1s ease;
+    &.active {
+      opacity: 1;
+      overflow: hidden;
+    }
   }
 }
 
@@ -79,9 +117,9 @@ html {
   position: absolute;
   right: 3vw;
   bottom: 4vh;
+  z-index: 101;
 
   .button {
-    z-index: 101;
     width: 75px;
     height: 75px;
     font-size: 75px;
