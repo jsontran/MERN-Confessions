@@ -1,4 +1,4 @@
-import "./App.css";
+import './App.scss';
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
@@ -8,27 +8,29 @@ function App() {
   const [listOfThoughts, setListOfThoughts] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [timestamp, setTimestamp] = useState("");
+  const [createdat, setCreatedAt] = useState("");
+
+  const [createMenu, setCreateMenu] 
 
   
   useEffect(() => {
     Axios.get("http://localhost:3001/getThoughts").then((response) => {
       setListOfThoughts(response.data);
     });
-  }, []);
+  }, [listOfThoughts]);
 
   const createThoughts = () => {
     Axios.post("http://localhost:3001/createThoughts", {
       title,
       text,
-      timestamp,
+      createdat,
     }).then((response) => {
-      setListOfUsers([
-        ...listOfUsers,
+      setListOfThoughts([
+        ...listOfThoughts,
         {
           title,
           text,
-          timestamp,
+          createdat,
         },
       ]);
     });
@@ -37,12 +39,11 @@ function App() {
   return (
     <div className="App">
       <div className="thoughtsDisplay">
-        {listOfThoughts.map((user) => {
+        {listOfThoughts.map((thought) => {
           return (
             <div>
-              <h1>Name: {user.name}</h1>
-              <h1>Age: {user.age}</h1>
-              <h1>Username: {user.username}</h1>
+              <h1>Title: {thought.title}</h1>
+              <h1>Text: {thought.text}</h1>
             </div>
           );
         })}
@@ -67,10 +68,10 @@ function App() {
           type="text"
           placeholder="Timestsamp..."
           onChange={(event) => {
-            setTimestamp(event.target.value);
+            setCreatedAt(event.target.value);
           }}
         />
-        <button onClick={createUser}> Create User </button>
+        <button onClick={createThoughts}> Create Thought </button>
       </div>
     </div>
   );
