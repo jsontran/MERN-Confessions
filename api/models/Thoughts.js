@@ -10,10 +10,11 @@ const ThoughtsSchema = new Schema({
         type: String,
         required: true
     },
-    timestamp: {
-        type: String,
-        required: true
-    }
+    createdAt: { 
+        type: Date, 
+        expires: '2m', 
+        default: Date.now
+     }
 })
 
 const ThoughtsModel = mongoose.model("Thoughts", ThoughtsSchema);

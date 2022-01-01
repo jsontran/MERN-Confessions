@@ -12,10 +12,9 @@ mongoose.connect('mongodb+srv://jsontran:MrWest2025@cluster0.lgoht.mongodb.net/M
 	useUnifiedTopology: true 
 }).then(() => console.log("Connected to MongoDB")).catch(console.error);
 
-const Thoughts = require('./models/Thoughts');
 const ThoughtsModel = require('./models/Thoughts');
 
-app.get('/getThoughts', async(req,res) => {
+app.get('/getThoughts', (req,res) => {
     ThoughtsModel.find({}, (err, result) => {
         if (err){
             res.json(err);
@@ -25,7 +24,7 @@ app.get('/getThoughts', async(req,res) => {
     });
 });
 
-app.post('/createThoughts', (req,res) => {
+app.post('/createThoughts', async (req,res) => {
     const thought = req.body;
 
     const newThought = new ThoughtsModel(thought);
