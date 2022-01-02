@@ -1,21 +1,23 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ThoughtsSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    text: {
-        type: String,
-        required: true
-    },
-    createdAt: { 
-        type: Date, 
-        expires: '2m', 
-        default: Date.now
-     }
-})
+  title: {
+    type: String,
+    required: true,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+  TW: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+
+  expire_at: { type: Date, default: Date.now, expires: 15 },
+});
 
 const ThoughtsModel = mongoose.model("Thoughts", ThoughtsSchema);
 module.exports = ThoughtsModel;
