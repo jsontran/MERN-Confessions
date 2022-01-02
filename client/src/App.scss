@@ -285,3 +285,49 @@ html {
     }
   }
 }
+
+@media only screen and (max-width: 720px) {
+  .wrapper {
+    .thoughtsDisplay {
+      width: 80vw;
+      .post {
+        .title {
+          width: calc(80vw - 15px);
+        }
+        .body {
+          width: calc(80vw - 15px);
+        }
+      }
+
+      &.active {
+        opacity: 0;
+      }
+    }
+    .createPrompt {
+      width: 100%;
+
+      input[type="text"] {
+        width: 60%;
+      }
+
+      textarea {
+        width: 60%;
+
+        font-family: Poppins;
+      }
+      .TriggerWarn {
+        width: 60%;
+
+        button {
+          width: auto;
+          height: auto;
+        }
+
+        &.active {
+          opacity: 1;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

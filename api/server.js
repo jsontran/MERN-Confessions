@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+require("dotenv").config();
+
 mongoose
   .connect(
     "mongodb+srv://jsontran:MrWest2025@cluster0.lgoht.mongodb.net/MernVoid?retryWrites=true&w=majority",
@@ -41,4 +43,4 @@ app.post("/createThoughts", async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("Server started on port 3001"));
+app.listen(process.env.PORT || 3001, () => console.log("CONNECTED"));
