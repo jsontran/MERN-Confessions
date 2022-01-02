@@ -121,10 +121,13 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all 1s ease;
+    opacity: 1;
     .post {
+      z-index: 3;
       margin-bottom: 35px;
       .title {
-        width: 60vw;
+        width: calc(60vw - 15px);
         font-size: 20px;
         background-color: rgb(24, 24, 24);
         padding: 15px;
@@ -135,7 +138,7 @@ html {
         font-family: Poppins;
       }
       .body {
-        width: 60vw;
+        width: calc(60vw - 15px);
         font-size: 15px;
         background-color: rgb(24, 24, 24);
         padding: 15px;
@@ -144,11 +147,15 @@ html {
         overflow-wrap: break-word;
         outline: solid 1px rgba(255, 255, 255, 0.5);
         font-family: Poppins;
+        &.active {
+          filter: blur(2px);
+          outline: solid 1px rgba(255, 255, 255, 1);
+        }
       }
     }
 
     &.active {
-      display: none;
+      opacity: 0;
     }
   }
 
@@ -170,7 +177,7 @@ html {
     );
     z-index: 2;
 
-    input {
+    input[type="text"] {
       background-color: rgb(24, 24, 24);
       color: white;
       width: 60%;
@@ -187,7 +194,7 @@ html {
       width: 60%;
       height: 50vh;
       padding: 15px 15px 15px 15px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       resize: none;
 
       font-size: 20px;
@@ -197,6 +204,30 @@ html {
       background-color: rgb(24, 24, 24);
       color: white;
       font-family: Poppins;
+    }
+    .TriggerWarn {
+      width: 60%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 20px;
+      outline: solid 2px rgba(255, 255, 255, 0.7);
+      border-radius: 3px;
+      padding: 5px;
+
+      .label {
+        font-size: 15px;
+        font-family: Poppins;
+      }
+
+      input[type="checkbox"] {
+        width: auto;
+        height: 15px;
+        right: 0;
+        color: white;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
     }
 
     button {

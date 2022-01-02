@@ -20,22 +20,25 @@ mongoose
 
 const ThoughtsModel = require("./models/Thoughts");
 
-app.get("/getThoughts", (req, res) => {
-  ThoughtsModel.find({}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
+app.get("/getThoughts", async (req, res) => {
+  try {
+    const getThoughts = await ThoughtsModel.find();
+    res.json(getThoughts);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 app.post("/createThoughts", async (req, res) => {
   const thought = req.body;
-
   const newThought = new ThoughtsModel(thought);
-  await newThought.save();
-  res.json(thought);
+
+  try {
+    await newThought.save();
+    res.json(thought);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 app.listen(3001, () => console.log("Server started on port 3001"));

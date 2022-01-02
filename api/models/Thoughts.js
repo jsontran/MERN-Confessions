@@ -16,7 +16,7 @@ const ThoughtsSchema = new Schema({
     default: false,
   },
 
-  expire_at: { type: Date, default: Date.now, expires: 15 },
+  expire_at: { type: Date, default: Date.now, expires: 7200 },
 });
 
 const ThoughtsModel = mongoose.model("Thoughts", ThoughtsSchema);

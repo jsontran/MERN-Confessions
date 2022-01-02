@@ -7,6 +7,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [TW, setTW] = useState(false);
+  const [defaultWarn, setDefaultWarn] = useState(true);
 
   const [createMenu, setCreateMenu] = useState(false);
   const [about, setAbout] = useState(false);
@@ -61,7 +62,14 @@ function App() {
                 return (
                   <div className="post">
                     <div className="title">{thought.title}</div>
-                    <div className="body">{thought.text}</div>
+                    <div
+                      className={
+                        "body " + (thought.TW && defaultWarn && "active")
+                      }
+                      onClick={() => setDefaultWarn(false)}
+                    >
+                      {thought.text}
+                    </div>
                   </div>
                 );
               })
@@ -86,25 +94,28 @@ function App() {
                 setText(event.target.value);
               }}
             />
-            <input
-              type="checkbox"
-              id="TW"
-              name="TW"
-              value=""
-              onClick={() => {
-                if (document.getElementById("TW").checked == true) {
-                  setTW(true);
-                } else if (document.getElementById("TW").checked == false) {
-                  setTW(false);
-                }
-              }}
-            ></input>
-
+            <div className="TriggerWarn">
+              <label>Can this be sensitive to others? </label>
+              <input
+                type="checkbox"
+                id="TW"
+                name="TW"
+                value=""
+                onClick={() => {
+                  if (document.getElementById("TW").checked == true) {
+                    setTW(true);
+                  } else if (document.getElementById("TW").checked == false) {
+                    setTW(false);
+                  }
+                }}
+              ></input>
+            </div>
             <button
               onClick={() => {
                 setCreateMenu(!createMenu);
                 createThoughts();
                 document.getElementById("TW").checked = false;
+                setTW(false);
               }}
             >
               {" "}
