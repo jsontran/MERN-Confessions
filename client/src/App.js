@@ -13,13 +13,15 @@ function App() {
   const [about, setAbout] = useState(false);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/getThoughts").then((response) => {
-      setListOfThoughts(response.data);
-    });
+    Axios.get("https://mern-void.herokuapp.com/getThoughts").then(
+      (response) => {
+        setListOfThoughts(response.data);
+      }
+    );
   }, [listOfThoughts]);
 
   const createThoughts = () => {
-    Axios.post("http://localhost:3001/createThoughts", {
+    Axios.post("https://mern-void.herokuapp.com/createThoughts", {
       title,
       text,
       TW,
