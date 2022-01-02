@@ -54,7 +54,17 @@ function App() {
       </div>
 
       <div className="content">
-        <div className={"about " + (about && "active")}>AMONG US</div>
+        <div
+          className={"about " + (about && "active")}
+          onClick={() => setAbout(!about)}
+        >
+          <div className="message">
+            This app allows the user to vent, confess, or create messages into
+            the void. After 2 hours, the message will be deleted from the
+            database and will be lost within the void As messages can contain
+            sensitive topics, please make sure to tag it.
+          </div>
+        </div>
         <div className="wrapper">
           <div className={"thoughtsDisplay " + (createMenu && "active")}>
             {listOfThoughts

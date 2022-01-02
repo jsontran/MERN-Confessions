@@ -23,12 +23,13 @@ mongoose
 const ThoughtsModel = require("./models/Thoughts");
 
 app.get("/getThoughts", async (req, res) => {
-  try {
-    const getThoughts = await ThoughtsModel.find();
-    res.json(getThoughts);
-  } catch (error) {
-    res.json(error);
-  }
+  ThoughtsModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
 app.post("/createThoughts", async (req, res) => {
