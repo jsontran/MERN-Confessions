@@ -13,6 +13,7 @@ function App() {
   const [about, setAbout] = useState(false);
 
   useEffect(() => {
+    document.title = "VOID";
     Axios.get("https://mern-void.herokuapp.com/getThoughts").then(
       (response) => {
         setListOfThoughts(response.data);
