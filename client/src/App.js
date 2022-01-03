@@ -21,7 +21,7 @@ function App() {
   }, [listOfThoughts]);
 
   const createThoughts = () => {
-    Axios.post("https://mern-void.herokuapp.com/createThoughts", {
+    Axios.post("http://localhost:3001/createThoughts", {
       title,
       text,
       TW,
